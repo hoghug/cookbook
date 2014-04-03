@@ -1,12 +1,13 @@
 class InstructionsController < ApplicationController
   def index
-    @instructions = Instruction.all
+    @instructions = Instruction.find(:all, :order => 'rating').reverse
     render "instructions/index.html.erb"
   end
 
   def new
     @tags = Tag.all
     @instruction = Instruction.new
+    @instruction_tags = @instruction.tags
     render "instructions/new.html.erb"
   end
 

@@ -2,7 +2,7 @@
 
 <ul>
   <% @instructions.each do |r| %>
-    <li><a href="instructions/<%= r.id %>"><%= r.name %></a></li>
+    <li><a href="/instructions/<%= r.id %>"><%= r.name %> (<%= r.rating %>)</a></li>
   <% end %>
 </ul>
 
