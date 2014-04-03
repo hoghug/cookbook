@@ -12,10 +12,10 @@ class InstructionsController < ApplicationController
 
   def create
     @instruction = Instruction.new(params[:instruction])
-    @tags = params[:tags]
+    @tags = params[:tags].split(',')
     # send to join table, the selected tags and the instruction id
     @tags.each do |tag|
-      @instruction.tags << tag
+      @instruction.tags << Tag.find(tag.to_i)
     end
     if @instruction.save
       redirect_to "/instructions/#{@instruction.id}"
@@ -26,16 +26,26 @@ class InstructionsController < ApplicationController
 
   def show
     @instruction = Instruction.find(params[:id])
+    @tags = @instruction.tags
     render "instructions/show.html.erb"
   end
 
   def edit
     @instruction = Instruction.find(params[:id])
+    @instruction_tags = @instruction.tags
+    @tags = Tag.all
     render "instructions/edit.html.erb"
   end
 
   def update
     @instruction = Instruction.find(params[:id])
+    @instruction.tags.each do |tag| #delete all tags, then reset
+      @instruction.tags.delete(tag)
+    end
+    @tags = params[:tags].split(',')
+    @tags.each do |tag|
+      @instruction.tags << Tag.find(tag.to_i)
+    end
     if @instruction.update(params[:instruction])
       flash[:notice] = "This has been updated"
       redirect_to "/instructions/#{@instruction.id}"

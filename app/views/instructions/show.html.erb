@@ -1,8 +1,16 @@
-<h1><%= @instruction.name %></h1>
+<h1><%= @instruction.name %><div id="star-rating" data-rating="<%= @instruction.rating %>"></div>
+</h1>
 <pre id="ingredients">
   <%= @instruction.ingredients %>
 </pre>
-<h4><%= @instruction.rating %></h4>
 <h5>Added on <%= @instruction.date %></h5>
 
-<p><a href="<%= @instruction.id %>/edit">Edit</a> | <a href="/instructions/<%= @instruction.id %>" data-method="delete" data-confirm="Are you sure?" rel="nofollow">Delete</a></p>
+<div>Tags:
+<% @tags.each do |tag| %>
+  <div class="rec-tag">
+    <%= tag.name %>
+  </div>
+<% end %>
+</div>
+<br>
+<p><a href="/instructions">Show All</a> | </a><a href="<%= @instruction.id %>/edit">Edit</a> | <a href="/instructions/<%= @instruction.id %>" data-method="delete" data-confirm="Are you sure?" rel="nofollow">Delete</a></p>

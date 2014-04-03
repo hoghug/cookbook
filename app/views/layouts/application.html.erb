@@ -5,12 +5,31 @@
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+  <link href='http://fonts.googleapis.com/css?family=Alegreya+Sans:400,500,700,400italic,700italic,500italic' rel='stylesheet' type='text/css'>
+
 </head>
 <body>
 <div id="wrapper">
   <%= yield %>
 </div>
 
+<script type="text/javascript">
+
+    $(document).ready(function() {
+
+      if ($('#star-rating').length) {
+        rating = $('#star-rating').data('rating')
+        for (x = 1; x <= rating; x++) {
+          $('#star-rating').prepend('<img src="http://datamarket.files.wordpress.com/2012/05/whole-star.png?w=700">');
+        }
+      }
+
+      $('#new-edit').submit(function() {
+        $('#tags').after('<input type="hidden" name="tags" value="' + $('#tags').val().join(',') + '">')
+      });
+    });
+
+</script>
 
 </body>
 </html>

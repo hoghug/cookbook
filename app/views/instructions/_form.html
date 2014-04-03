@@ -1,13 +1,19 @@
-  <label class="i-label"><span>Tags:</span>
-    <select id="tags" multiple name="tags">
-      <% @tags.each do |tag|  %>
-        <option value="<%= tag.id %>"><%= tag.name %></option>
-      <% end %>
-    </select>
-  </label>
+
   <label class="i-label"><span>Name:</span><input name="instruction[name]" type="text" value="<%= @instruction.name %>"></label>
   <label class="i-label"><span>Ingredients:</span><textarea name="instruction[ingredients]" cols="20" rows="5"><%=@instruction.ingredients%></textarea></label>
   <label class="i-label"><span>Rating:</span><input name="instruction[rating]" type="number" min="1" max="5" value="<%=@instruction.rating%>"></label>
   <label class="i-label"><span>Date Added:</span><input name="instruction[date]" type="date" value="<%=@instruction.date%>"></label>
+    <label class="i-label"><span>Tags:</span>
+    <select id="tags" multiple>
+      <% @tags.each do |tag| %>
+        <option
+        <% if @instruction_tags.include?(tag) %>
+        selected
+        <% end %>
+         value="<%= tag.id %>"><%= tag.name %></option>
+      <% end %>
+    </select>
+  </label>
+
   <div class="clear"></div>
   <button class="btn btn-danger">Submit Instruction</button>
