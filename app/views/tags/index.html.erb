@@ -1,0 +1,9 @@
+<h1>My Tags</h1>
+
+<ul>
+  <% @tags.each do |t| %>
+    <li><a href="tags/<%= t.id %>"><%= t.name %></a></li>
+  <% end %>
+</ul>
+
+<p><a href="tags/new">Add New</a>

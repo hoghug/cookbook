@@ -1,0 +1,41 @@
+
+html, body, div, img, span, h1, h2, h3, h4, p, ol, ul, li {
+  margin:0;
+  padding:0;
+  border:0;
+  text-align:left;
+  font-weight:normal;
+  vertical-align:baseline;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  background-color:black;
+}
+.clear {clear:both;}
+
+#wrapper {
+  width:800px;
+  margin:30px auto;
+  padding: 20px;
+  background-color: white;
+}
+
+.i-label {
+  float:left;
+  clear:both;
+}
+
+.i-label span {
+  vertical-align: top;
+  text-align: right;
+  width:100px;
+  display:inline-block;
+  margin: 0 8px 0 0;
+  font-weight: bold;
+}

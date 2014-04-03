@@ -1,0 +1,9 @@
+<h1>My Instructions</h1>
+
+<ul>
+  <% @instructions.each do |r| %>
+    <li><a href="instructions/<%= r.id %>"><%= r.name %></a></li>
+  <% end %>
+</ul>
+
+<p><a href="instructions/new">Add New</a>
